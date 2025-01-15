@@ -16,8 +16,8 @@ services:
       context: ./backend_django/my_app_project
       dockerfile: Dockerfile.prod
     command: gunicorn my_app_project.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - "8000:8000"
+    expose:
+      - 8000
     volumes:
       - ./backend_django/my_app_project:/usr/src/app/my_app_project
     env_file:
@@ -29,11 +29,18 @@ services:
     image: postgres:14-alpine 
     # Alternatively, use the custom PostgreSQL image:
     # build: 
-    #   context: ./postgres
+    #   context: ./db/postgres
     env_file:
       - ./.env.prod
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - backend
 
 volumes:
   postgres_data:
