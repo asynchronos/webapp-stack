@@ -28,7 +28,5 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
-WORKDIR /usr/src/app/my_app_project
-
 # CMD ["uvicorn", "my_app.asgi:application", "--host", "0.0.0.0", "--port", "8000"]
 # CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]

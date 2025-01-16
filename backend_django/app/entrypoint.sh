@@ -11,8 +11,8 @@ then
     echo "PostgreSQL started"
 fi
 
-# # run migrate manually withc command docker compose exec ...
-# python manage.py flush --no-input
-# python manage.py migrate
+# you can run migrate manually withc command docker compose exec ...
+python manage.py flush --no-input
+python manage.py migrate
 
 exec "$@"

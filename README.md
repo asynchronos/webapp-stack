@@ -1,5 +1,7 @@
 # webapp-stack
-docker-react-django-postgresql
+Webapp Stack template with docker-react-django-postgresql-nginx
+
+[Quick Start](QUICKSTART.md)
 
 ## Setting Up PostgreSQL in Django
 Adjust your Django settings. Open the myproject/settings.py file and modify the DATABASES section as follows:

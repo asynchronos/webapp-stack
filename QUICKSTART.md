@@ -9,7 +9,7 @@ docker compose build
 ## Running the containers
 The running of our containers is as simple as running the following command:
 ```console
-docker compose up
+docker compose up -d
 ```
 
 ## Run the migrations
@@ -24,10 +24,9 @@ and [here](http://127.0.0.1:8000/) for the default 'django is running' page.
 ## Remove the containers
 ```console
 docker compose doown
-OR
-docker compose doown -V
 ```
 
+# Appendix
 ## Re-Build & Running the containers in daemon mode
 The running of our containers is as simple as running the following command:
 ```console
@@ -36,8 +35,10 @@ docker compose up --build -d
 
 ## Build the production images and spin up the containers
 ```console
-docker-compose -f docker-compose.prod.yml down -v
-docker-compose -f docker-compose.prod.yml up -d --build
-docker-compose -f docker-compose.prod.yml exec backend python manage.py migrate --noinput
+docker compose doown -v
+docker compose -f docker-compose.prod.yml down -v
+docker compose -f docker-compose.prod.yml up -d --build -V
+docker compose -f docker-compose.prod.yml exec backend python manage.py migrate --noinput
+docker compose -f docker-compose.prod.yml exec backend sh ./nginx_static.prod.sh
 ```
 Ensure the app is up and running at http://localhost:1337.
